@@ -1,9 +1,9 @@
 const express = require("express");
 const route = express.Router();
 
-const authRoutes = require("./auth-route.js");
-const userRoutes = require("./user-route.js");
-const todoRoutes = require("./todo-route.js");
+const authRoutes = require("./auth-route");
+const userRoutes = require("./user-route");
+const todoRoutes = require("./todo-route");
 const verifyToken = require("../middleware/auth");
 
 route.get("/", (req, res) => {
