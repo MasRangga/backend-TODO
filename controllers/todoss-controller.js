@@ -40,18 +40,16 @@ module.exports = {
 
   createTodo: async (req, res) => {
     let data = req.body;
-    console.log(data);
 
     try {
-      const todo = await Todo.create(data);
+      await Todo.create(data);
 
       res.status(201).json({
-        message: "berhasil menambahkan Todo",
-        Todo: todo,
+        message: "Berhasil menambahkan todo",
       });
     } catch (error) {
-      res.status(500).json({
-        message: "gagal menambahkan Todo",
+      res.json({
+        message: "Gagal menambahkan todo",
         error: error.message,
       });
     }
