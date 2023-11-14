@@ -76,8 +76,8 @@ route.post("/regis", async (req, res) => {
 
     await User.create({
       id: newUserId,
-      name: data.name,
-      username: data.username,
+      firstName: data.firstName,
+      lastName: data.lastName,
       email: data.email,
       password: hashPassword,
     });
