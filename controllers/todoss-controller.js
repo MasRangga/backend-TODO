@@ -3,11 +3,10 @@ const { todos } = require("../models");
 module.exports = {
   getAllTodo: async (req, res) => {
     try {
-      // Mengambil semua data pengguna dari model Todo
-      const Todo = await todos.findAll();
-      console.log(Todo);
+      const todoList = await todos.findAll(); // Revisi: Ganti nama variabel agar lebih deskriptif
+      console.log(todoList);
 
-      res.status(200).json(Todo);
+      res.status(200).json(todoList);
     } catch (error) {
       res.status(500).json({
         message: "Gagal mengambil data todo",
@@ -18,13 +17,11 @@ module.exports = {
 
   getTodoById: async (req, res) => {
     try {
-      const TodoId = req.params.id; // Mengambil ID pengguna dari parameter permintaan
+      const todoId = req.params.id; // Revisi: Ganti nama variabel agar lebih deskriptif
+      const todo = await todos.findByPk(todoId);
 
-      // Mengambil pengguna berdasarkan ID
-      const Todo = await todos.findByPk(TodoId);
-
-      if (Todo) {
-        res.status(200).json(Todo);
+      if (todo) {
+        res.status(200).json(todo);
       } else {
         res.status(404).json({
           message: "Todo tidak ditemukan",
@@ -39,16 +36,16 @@ module.exports = {
   },
 
   createTodo: async (req, res) => {
-    let data = req.body;
+    const todoData = req.body; // Revisi: Ganti nama variabel agar lebih deskriptif
 
     try {
-      await todos.create(data);
+      await todos.create(todoData);
 
       res.status(201).json({
         message: "Berhasil menambahkan todo",
       });
     } catch (error) {
-      res.json({
+      res.status(500).json({
         message: "Gagal menambahkan todo",
         error: error.message,
       });
@@ -65,14 +62,13 @@ module.exports = {
         return res.status(404).json({ message: "Todo not found" });
       }
 
-      // Update the todo's value
-      todo.value = req.body.value;
-      todo.user_id = req.body.user_id;
-      await todo.save();
+      // Revisi: Menunggu pembaruan data selesai sebelum melanjutkan
+      await todo.update({
+        value: req.body.value,
+        user_id: req.body.user_id,
+      });
 
-      // Set proper headers
-      res.header("Content-Type", "application/json");
-      res.status(200).json({ message: "Todo updated successfully" });
+      res.status(200).json({ message: "Todo berhasil diupdate" });
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: "Internal Server Error" });
@@ -81,12 +77,11 @@ module.exports = {
 
   deleteAllTodo: async (req, res) => {
     try {
-      // Delete all todos
       await todos.destroy({ where: {} });
-      return res.status(200).json({ message: "All todos deleted" });
+      res.status(200).json({ message: "Semua todo berhasil dihapus" });
     } catch (error) {
       console.error(error);
-      return res.status(500).json({ message: "Internal Server Error" });
+      res.status(500).json({ message: "Internal Server Error" });
     }
   },
 
@@ -97,14 +92,14 @@ module.exports = {
       const todo = await todos.findByPk(id);
 
       if (!todo) {
-        return res.status(404).json({ message: "Todo not found" });
+        return res.status(404).json({ message: "Todo tidak ditemukan" });
       }
 
       await todo.destroy();
-      return res.status(200).json({ message: "Todo deleted" });
+      res.status(200).json({ message: "Todo berhasil dihapus" });
     } catch (error) {
       console.error(error);
-      return res.status(500).json({ message: "Internal Server Error" });
+      res.status(500).json({ message: "Internal Server Error" });
     }
   },
 };

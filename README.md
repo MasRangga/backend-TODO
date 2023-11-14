@@ -76,3 +76,4 @@ https://gentle-jacket-newt.cyclic.app/
 
     Server response: <br />
     ![Alt text](img/image-responseUPDATE.png)
+
