@@ -1,10 +1,10 @@
-const { User, Todo } = require("../models");
+const { User, todos } = require("../models");
 
 module.exports = {
   getAllUser: async (req, res) => {
     try {
       // Mengambil semua data pengguna dari model User
-      const users = await User.findAll({ include: Todo });
+      const users = await User.findAll({ include: todos });
       
       
       res.json({

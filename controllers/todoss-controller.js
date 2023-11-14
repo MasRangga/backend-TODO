@@ -1,13 +1,13 @@
-const { Todo } = require("../models");
+const { todos } = require("../models");
 
 module.exports = {
   getAllTodo: async (req, res) => {
     try {
       // Mengambil semua data pengguna dari model Todo
-      const Todos = await Todo.findAll();
-      console.log(Todos);
+      const Todo = await todos.findAll();
+      console.log(Todo);
 
-      res.status(200).json(Todos);
+      res.status(200).json(Todo);
     } catch (error) {
       res.status(500).json({
         message: "Gagal mengambil data todo",
@@ -21,10 +21,10 @@ module.exports = {
       const TodoId = req.params.id; // Mengambil ID pengguna dari parameter permintaan
 
       // Mengambil pengguna berdasarkan ID
-      const Todos = await Todo.findByPk(TodoId);
+      const Todo = await todos.findByPk(TodoId);
 
-      if (Todos) {
-        res.status(200).json(Todos);
+      if (Todo) {
+        res.status(200).json(Todo);
       } else {
         res.status(404).json({
           message: "Todo tidak ditemukan",
@@ -42,7 +42,7 @@ module.exports = {
     let data = req.body;
 
     try {
-      await Todo.create(data);
+      await todos.create(data);
 
       res.status(201).json({
         message: "Berhasil menambahkan todo",
@@ -59,7 +59,7 @@ module.exports = {
     const id = parseInt(req.params.id);
 
     try {
-      const todo = await Todo.findByPk(id);
+      const todo = await todos.findByPk(id);
 
       if (!todo) {
         return res.status(404).json({ message: "Todo not found" });
@@ -82,7 +82,7 @@ module.exports = {
   deleteAllTodo: async (req, res) => {
     try {
       // Delete all todos
-      await Todo.destroy({ where: {} });
+      await todos.destroy({ where: {} });
       return res.status(200).json({ message: "All todos deleted" });
     } catch (error) {
       console.error(error);
@@ -94,7 +94,7 @@ module.exports = {
     const id = parseInt(req.params.id);
 
     try {
-      const todo = await Todo.findByPk(id);
+      const todo = await todos.findByPk(id);
 
       if (!todo) {
         return res.status(404).json({ message: "Todo not found" });
