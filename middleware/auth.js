@@ -7,10 +7,7 @@ const verifyToken = (req, res, next) => {
   const header = req.headers.authorization;
 
   if (!header) {
-    res.json({
-      message: "undefined header",
-    });
-    return;
+    return next();
   }
 
   const token = header.split(" ")[1];
