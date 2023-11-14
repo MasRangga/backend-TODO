@@ -24,7 +24,9 @@ module.exports = {
       const userId = req.params.id; // Mengambil ID pengguna dari parameter permintaan
 
       // Mengambil pengguna berdasarkan ID
-      const user = await User.findByPk(userId);
+      const user = await User.findByPk(userId,{
+        include: todos,
+      });
 
       if (user) {
         res.status(200).json(user);
