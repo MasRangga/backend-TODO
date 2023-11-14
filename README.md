@@ -44,3 +44,35 @@ https://gentle-jacket-newt.cyclic.app/
     Server response:
     ![Alt text](img/image-usersGET-response.png)
 
+* Get User By ID
+
+    method: GET
+    https://gentle-jacket-newt.cyclic.app/users/id
+
+    Used to get user data by ID, for the example:
+    ![Alt text](img/image-usersGET-response.png)
+
+    Server response: <br />
+    ![Alt text](img/image-responsUser3.png)
+
+* Delete User By ID
+
+    method: DELETE
+    https://gentle-jacket-newt.cyclic.app/users/id
+
+    Used to delete user data by ID, for the example:
+    ![Alt text](img/image-delete.png)
+
+    Server response: <br />
+    ![Alt text](img/image-responsDelete.png)
+
+* Update User By ID
+
+    method: PUT
+    https://gentle-jacket-newt.cyclic.app/users/id
+
+    Used to update user data by ID, for the example:
+    ![Alt text](img/image-UpdatePUT.png)
+
+    Server response: <br />
+    ![Alt text](img/image-responseUPDATE.png)
