@@ -20,7 +20,7 @@ https://gentle-jacket-newt.cyclic.app/
     ![Alt text](img/image-30.png)
 
 
-* Login
+* Login maseter
 
     method: POST
     https://todo-be.up.railway.app/auth/login
