@@ -5,9 +5,12 @@ module.exports = {
     try {
       // Mengambil semua data pengguna dari model User
       const users = await User.findAll({ include: Todo });
-      console.log(users);
-
-      res.status(200).json(users);
+      
+      
+      res.json({
+        message: "Successfully retrieved all users",
+        data: users,
+      });
     } catch (error) {
       res.status(500).json({
         message: "Gagal mengambil data pengguna",
