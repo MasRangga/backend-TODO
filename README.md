@@ -146,7 +146,7 @@ https://gentle-jacket-newt.cyclic.app/
     https://gentle-jacket-newt.cyclic.app/todos/id
 
     Used to update todo data by ID, for the example:
-    ![Alt text](img/image-26.png)
+    ![Alt text](img/UpdateVALUE-TODOS.png)
 
     Server response: <br />
-    ![Alt text](img/image-27.png)
+    ![Alt text](img/Response-Value-TODOSS.png)
