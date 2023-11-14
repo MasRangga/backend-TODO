@@ -132,7 +132,7 @@ https://gentle-jacket-newt.cyclic.app/
 * Delete All Todo
 
     method: DELETE
-    https://todo-be.up.railway.app/todos
+     https://gentle-jacket-newt.cyclic.app/todos
 
     Used to delete all todo, for the example:
     ![Alt text](img/deletALL-todos.png)
